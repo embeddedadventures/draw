@@ -60,6 +60,18 @@ Contact us at admin [at] embeddedadventures.com
 	#include "draw_font_16double.h"
 #endif
 
+#ifdef DRAW_FONT_12DOUBLE
+	#include "draw_font_12double.h"
+#endif
+
+#ifdef DRAW_FONT_10NORMAL
+	#include "draw_font_10normal.h"
+#endif
+
+#ifdef DRAW_FONT_10DOUBLE
+	#include "draw_font_10double.h"
+#endif
+
 #ifdef DRAW_FONT_5NARROW
 	#include "draw_font_5narrow.h"
 #endif
@@ -83,6 +95,7 @@ Contact us at admin [at] embeddedadventures.com
 
 void draw_fonts_init(void);
 void draw_fonts_print_str(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, char *str);
+void draw_fonts_print_str(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, const char *str);
 void draw_fonts_print_str_wiggle(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, char *str, int8 wiggle, int8 start_wiggle, uns8 start_wiggle_inc);
 void draw_fonts_bignum(draw_x_type x, draw_y_type y, draw_x_type width, draw_x_type start_pixel, uns8 colour, char *str);
 void draw_fonts_print_str_vert(uns8 font_id, draw_x_type x, draw_y_type y, draw_y_type width, uns16 start_pixel, uns8 colour, char *str);

@@ -279,11 +279,7 @@ uns8 index;
   serial_print_int(max_index);
 }
 
-uns8 ICACHE_FLASH_ATTR read_rom_uint8(const uns8* addr){
-    uint32 bytes;
-    bytes = *(uint32*)((uint32)addr & ~3);
-    return ((uns8*)&bytes)[(uint32)addr & 3];
-}
+
  
 
 uns16 draw_fonts_get_index_loc(uns8 id) {
@@ -405,7 +401,170 @@ uns16 length;
 
 }
 
+void draw_fonts_print_str(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, const char *str) {
 
+uns8 my_char;
+uns16 index_pos = 0;
+uns16 index_pos_next = 0;
+uns16 count, s_count;
+uns16 sliver, x_origin, y_origin, pixel;
+uns16 lookup;
+
+
+	y_origin = y;
+	x_origin = x;
+	pixel = 0;
+
+
+// prep the font
+	#ifdef DEBUG_FONTS
+		serial_print_str("FONT\n");
+		serial_print_var("x", x);
+		serial_print_var("y", y);
+		serial_print_var("width", width);
+		serial_print_var("sp", start_pixel);
+	#endif
+	if (!draw_fonts_prepare(font_id)) {
+	    serial_print_str("Not doing font, bad font!\n");
+	    return;
+	}
+
+	#ifdef DEBUG_FONTS
+		serial_print_str("Print:\"");
+		serial_print_str(str);
+		serial_print_str("\"\n");	
+	#endif
+	
+	while (*str) {
+		
+		#ifdef DEBUG_FONTS
+			serial_print_str("Print:\"");
+			serial_print_str(str);
+			serial_print_str("\"\n");	
+		
+			serial_print_str(" Char=");
+			serial_putc(*str);
+			serial_print_nl();
+			serial_print_var("fh=", font_height);
+			serial_print_nl();
+		#endif
+			
+		// first look up character in index
+		my_char = *str;
+
+		if ((my_char < first_char) || (my_char > last_char)) {
+			my_char = '?';
+		}	
+		my_char = my_char - first_char;
+
+		index_pos = font_index_loc[my_char];
+		index_pos_next = font_index_loc[my_char+1];
+				
+		#ifdef DEBUG_FONTS
+			serial_print_var("my_char=", my_char);
+			serial_print_var("first_char	=", first_char);
+
+			serial_print_var("my_char - first_char =", index_pos);
+			serial_print_var("index_pos=", index_pos);
+			serial_print_var("index_pos_next=", index_pos_next);
+		#endif
+		
+		uns8 total_slivers = index_pos_next - index_pos;
+
+		index_pos = index_pos * bytes_per_sliver;
+
+		lookup =  index_pos;
+
+		#ifdef DEBUG_FONTS
+			serial_print_var("datalookup=", lookup);
+			serial_print_var("total_slivers=", total_slivers);
+			serial_print_var("font_height=", font_height);
+			serial_print_var("first_char=", first_char);
+
+		#endif
+		if (pixel + total_slivers > start_pixel) {
+		     for(count = 0 ; count != total_slivers ; count++) {	// interate over slivers
+			    #ifdef DEBUG_FONTS
+				    serial_print_var("Count=", count);
+			    #endif
+			    // Now iterate over sliver
+
+			    s_count = 0;
+				while (s_count < font_height) {	// interate over a single sliver
+
+				    if (s_count % 8 == 0) {	// grab another byte of the sliver
+					sliver = font_data_loc[lookup++];
+					//sliver = read_rom_uint8(&font_data_loc[lookup++]);
+					#ifdef DEBUG_FONTS
+						serial_print_str("sliver=");
+						serial_print_int_hex(sliver);
+						serial_print_nl();
+					#endif
+				    }
+				    if (pixel >= start_pixel) {
+					if (test_bit(sliver, 7)) {
+					    #ifdef DRAW_HW_Y_ORIGIN_TOP_LEFT
+              //#error "BOttom left"
+						    draw_set_pixel(x, y + s_count, colour);
+					    #else
+					    // DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
+               //#error "top left"
+						    draw_set_pixel(x, y - s_count, colour);
+					    #endif
+					} else {
+					    #ifdef DRAW_HW_Y_ORIGIN_TOP_LEFT
+						    draw_set_pixel(x, y + s_count, 0);
+					    #else
+					    // DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
+						    draw_set_pixel(x, y - s_count, 0);
+					    #endif
+
+					}
+				    }
+				    sliver <<= 1;
+				    s_count++;
+				}	// display sliver
+			    if (pixel >= start_pixel) {
+				x++;
+			    }
+			    if (x - x_origin >= width) {
+				return;
+			    }
+			    pixel++;
+		    } // all slivers
+		} else {
+		    pixel = pixel + total_slivers;
+		}
+		str++;	// next character
+    delay(0);
+		uns8 intergap_count;
+		intergap_count = inter_gap;
+		while (intergap_count) {
+
+
+		    if (pixel >= start_pixel) {
+			s_count = 0;
+			while (s_count < font_height) {	// interate over a single sliver
+			    #ifdef DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
+				    draw_set_pixel(x, y + s_count, 0);
+			    #else
+			    // DRAW_HW_Y_ORIGIN == TOP_LEFT
+				    draw_set_pixel(x, y - s_count, 0);
+			    #endif
+			    s_count++;
+			}
+
+			x++;
+		    }
+		    pixel++;
+		    intergap_count--;
+		}
+			
+		if (x - x_origin >= width) {
+			return;
+		}	
+	}
+}  
 
 void draw_fonts_print_str(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, char *str) {
 

@@ -37,6 +37,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "utils.h"
 
+
 #define DRAW_FONT_7NORMAL_ID 3
 #define DRAW_FONT_7NORMAL_FIRST_CHAR 32
 #define DRAW_FONT_7NORMAL_LAST_CHAR 122

@@ -294,7 +294,7 @@ uns16	 buffer_loc;
 
 	for(y = 0 ; y < draw_pixels_high ; y++) {
 		#ifdef DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
-			inv_y = DRAW_PIXELS_HIGH - 1 - y; // need to print out from the top
+			inv_y = draw_pixels_high - 1 - y; // need to print out from the top
 		#else
 			inv_y = y;
 		#endif	
@@ -547,7 +547,7 @@ draw_y_type ybitmap;
 				bitpos = bitpos << 1;
 			}
 			if (value & bitpos) {
-				#ifdef DRAW_HW_Y_ORIGIN == TOP_LEFT
+				#ifdef DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
 					draw_set_pixel(x + xbitmap, y + ybitmap, colour);
 				#else
 					draw_set_pixel(x + xbitmap, y - ybitmap, colour);

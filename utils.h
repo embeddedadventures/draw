@@ -46,6 +46,9 @@ Contact us at admin [at] embeddedadventures.com
 #ifndef	uns32
 	#define	uns32	uint32_t
 #endif
+#ifndef	int8
+	#define	int8	int8_t
+#endif
 
 #define 	serial_print_str(x) 	Serial.print(x)
 #define		serial_print_int(x)		Serial.print(x, DEC)
@@ -58,5 +61,11 @@ Contact us at admin [at] embeddedadventures.com
 #define set_bit( x, b )   ((x) |= (1 << (b)))
 #define test_bit( x, b )  ((x) & (1 << (b)))
 #define toggle_bit( x, b )  ((x) ^= (1 << (b)))
+
+/*uns8 ICACHE_FLASH_ATTR read_rom_uint8(const uns8* addr){
+    uint32 bytes;
+    bytes = *(uint32*)((uint32)addr & ~3);
+    return ((uns8*)&bytes)[(uint32)addr & 3];
+}*/
 
 #endif

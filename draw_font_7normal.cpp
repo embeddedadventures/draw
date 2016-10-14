@@ -35,7 +35,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_7normal.h"
 
-uns16  const font_7normal_index[]  = {
+uns16  const  font_7normal_index[]  = {
 
     0, // 32 -
     3, // 33 - !
@@ -131,7 +131,7 @@ uns16  const font_7normal_index[]  = {
     386, // 123 - {
 
 };
-uns8  const font_7normal_data[]  = {
+uns8  const  font_7normal_data[]  = {
 
     // 0,  32 -
  0x00, 0x00, 0x00,
