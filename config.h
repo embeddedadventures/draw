@@ -36,7 +36,7 @@ Contact us at admin [at] embeddedadventures.com
 #define __config_h
 #include "Arduino.h"
 
-#define GDEP015OC1
+#define EPD200200B
 //#define SSD1306_EA
 //#define	PCD8544_EA
 
@@ -54,7 +54,7 @@ Contact us at admin [at] embeddedadventures.com
 	#define FONT_COUNT 	6
 #endif
 
-#ifdef	GDEP015OC1
+#ifdef	EPD200200B
 	#define DRAW_HW_Y_ORIGIN_TOP_LEFT
 	#define DRAW_HW_BUFFER_ORIENTATION_HORIZONTAL
 	#define FONT_COUNT 	9
