@@ -36,11 +36,10 @@ Contact us at admin [at] embeddedadventures.com
 #define __config_h
 #include "Arduino.h"
 
+//Definitions for the various display modules. Only one should be defined
 #define EPD200200B
 //#define SSD1306_EA
 //#define	PCD8544_EA
-
-#define DRAW_BITS_PER_PIXEL 1
 
 #ifdef	SSD1306_EA
 	#define DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
@@ -59,6 +58,8 @@ Contact us at admin [at] embeddedadventures.com
 	#define DRAW_HW_BUFFER_ORIENTATION_HORIZONTAL
 	#define FONT_COUNT 	9
 #endif
+
+#define DRAW_BITS_PER_PIXEL 1
 
 //#define DEBUG_FONTS
 
