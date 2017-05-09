@@ -33,7 +33,7 @@ Contact us at admin [at] embeddedadventures.com
 */
 #include "draw_font_12double.h"
 
-uns16  const font_12double_index[]  = {
+uns16  const font_12double_index[] PROGMEM = {
 
     0, // 32 -
     3, // 33 - !

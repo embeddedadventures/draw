@@ -104,4 +104,10 @@ void draw_fonts_print_str_rj(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_
 
 uns16 draw_fonts_length_str(uns8 font_id, char *str);
 draw_y_type draw_fonts_height(uns8 font_id);
+
+//uns8 ICACHE_FLASH_ATTR read_rom_uint8(const uns8* addr);
+
+//uns16 ICACHE_FLASH_ATTR read_rom_uint16(const uns16* addr);
+
+
 #endif

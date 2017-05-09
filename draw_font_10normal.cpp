@@ -33,7 +33,7 @@ Contact us at admin [at] embeddedadventures.com
 */
 #include "draw_font_10normal.h"
 
-uns16  const font_10normal_index[]  = {
+const uns16 font_10normal_index[] PROGMEM = {
     0, // 32 -
     3, // 33 - !
     4, // 34 - "
@@ -99,7 +99,8 @@ uns16  const font_10normal_index[]  = {
     267, // 94 - ^
 
 };
-uns8  const font_10normal_data[]  = {
+
+const uns8 font_10normal_data[] PROGMEM = {
 
 
     // 0,  32 -

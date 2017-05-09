@@ -111,6 +111,7 @@ Put the following in your config.h:
 
 #include "config.h"
 #include "utils.h"
+#include "ea_bitmaps.h"
 
 #define HORIZONTAL 0
 #define VERTICAL   1

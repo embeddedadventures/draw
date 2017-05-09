@@ -35,7 +35,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_8fixed.h"
 
-uns16  const font_8fixed_index[]  = {
+uns16  const font_8fixed_index[] PROGMEM = {
     0, // 32 -
     5, // 33 - !
     10, // 34 - "
@@ -134,7 +134,7 @@ uns16  const font_8fixed_index[]  = {
     475, // 127 - 
 
 };
-uns8  const font_8fixed_data[]  = {
+uns8  const font_8fixed_data[] PROGMEM = {
 
 
     // 0,  32 -

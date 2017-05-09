@@ -34,20 +34,20 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_fonts.h"
 #include "draw_font_5narrow.h"
-#include "draw_font_16triple.h"
-#include "draw_font_16double.h"
-#include "draw_font_24triple.h"
+//#include "draw_font_16triple.h"
+//#include "draw_font_16double.h"
+//#include "draw_font_24triple.h"
 #include "draw_font_8normal.h"
 #include "draw_font_10normal.h"
 #include "draw_font_10narrow.h"
 #include "draw_font_10double.h"
 #include "draw_font_12double.h"
 #include "draw_font_7normal.h"
-#include "draw_font_bignum.h"
-#include "draw_font_32tahoma.h"
-#include "draw_font_32segoe.h"
-#include "draw_font_10arial.h"
-#include "draw_font_5x7fixed.h"
+//#include "draw_font_bignum.h"
+//#include "draw_font_32tahoma.h"
+//#include "draw_font_32segoe.h"
+//#include "draw_font_10arial.h"
+//#include "draw_font_5x7fixed.h"
 //#include "draw_font_28normal.h"
 #include "draw.h"
 #include "config.h"
@@ -81,12 +81,12 @@ uns8 last_font_id = 255;
 uns8 max_index = 0;
 
 void draw_fonts_init(void) {
-
+	DEBUG_FONTLN("draw_fonts_init");
 uns8 index;
 
 	index = 0;
 	#ifdef DRAW_FONT_5NARROW
-
+		DEBUG_FONTLN("DRAW_FONT_5NARROW");
 		draw_font_indexes[index].font_id = DRAW_FONT_5NARROW_ID;
 		draw_font_indexes[index].index = font_5narrow_index;
 		draw_font_indexes[index].data = font_5narrow_data;
@@ -97,7 +97,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_5NARROW_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_5NORMAL
-
+		DEBUG_FONTLN("DRAW_FONT_5NORMAL");
 		draw_font_indexes[index].font_id = DRAW_FONT_5NORMAL_ID;
 		draw_font_indexes[index].index = font_5normal_index;
 		draw_font_indexes[index].data = font_5normal_data;
@@ -108,7 +108,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_5NORMAL_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_7NORMAL
-
+		DEBUG_FONTLN("DRAW_FONT_7NORMAL");
 		draw_font_indexes[index].font_id = DRAW_FONT_7NORMAL_ID;
 		draw_font_indexes[index].index = font_7normal_index;
 		draw_font_indexes[index].data = font_7normal_data;
@@ -119,7 +119,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_7NORMAL_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_8NORMAL
-
+		DEBUG_FONTLN("DRAW_FONT_8NORMAL");
 		draw_font_indexes[index].font_id = DRAW_FONT_8NORMAL_ID;
 		draw_font_indexes[index].index = font_8normal_index;
 		draw_font_indexes[index].data = font_8normal_data;
@@ -130,7 +130,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_8NORMAL_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_8FIXED
-
+		DEBUG_FONTLN("DRAW_FONT_8FIXED");
 		draw_font_indexes[index].font_id = DRAW_FONT_8FIXED_ID;
 		draw_font_indexes[index].index = font_8fixed_index;
 		draw_font_indexes[index].data = font_8fixed_data;
@@ -141,7 +141,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_8FIXED_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_10NARROW
-
+		DEBUG_FONTLN("DRAW_FONT_10NARROW");
 		draw_font_indexes[index].font_id = DRAW_FONT_10NARROW_ID;
 		draw_font_indexes[index].index = font_10narrow_index;
 		draw_font_indexes[index].data = font_10narrow_data;
@@ -152,7 +152,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_10NARROW_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_10NORMAL
-
+		DEBUG_FONTLN("DRAW_FONT_10NORMAL");
 		draw_font_indexes[index].font_id = DRAW_FONT_10NORMAL_ID;
 		draw_font_indexes[index].index = font_10normal_index;
 		draw_font_indexes[index].data = font_10normal_data;
@@ -163,7 +163,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_10NORMAL_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_10DOUBLE
-
+		DEBUG_FONTLN("DRAW_FONT_10DOUBLE");
 		draw_font_indexes[index].font_id = DRAW_FONT_10DOUBLE_ID;
 		draw_font_indexes[index].index = font_10double_index;
 		draw_font_indexes[index].data = font_10double_data;
@@ -174,7 +174,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_10DOUBLE_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_12DOUBLE
-
+		DEBUG_FONTLN("DRAW_FONT_12DOUBLE");
 		draw_font_indexes[index].font_id = DRAW_FONT_12DOUBLE_ID;
 		draw_font_indexes[index].index = font_12double_index;
 		draw_font_indexes[index].data = font_12double_data;
@@ -185,7 +185,7 @@ uns8 index;
 		draw_font_indexes[index++].inter_gap = DRAW_FONT_12DOUBLE_INTER_GAP;
 	#endif
 	#ifdef DRAW_FONT_16DOUBLE
-
+		DEBUG_FONTLN("DRAW_FONT_16DOUBLE");
 		draw_font_indexes[index].font_id = DRAW_FONT_16DOUBLE_ID;
 		draw_font_indexes[index].index = font_16double_index;
 		draw_font_indexes[index].data = font_16double_data;
@@ -277,13 +277,10 @@ uns8 index;
   max_index = index-1;
   serial_print_str("Max index = ");
   serial_print_int(max_index);
+  DEBUG_FONTLN("fonts_init end");
 }
 
-
- 
-
 uns16 draw_fonts_get_index_loc(uns8 id) {
-
 uns8 count;
 	//serial_print_str("Finding font ");
 	//serial_print_int(id);
@@ -403,11 +400,11 @@ uns16 length;
 
 void draw_fonts_print_str(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, const char *str) {
 
-uns8 my_char;
+uns8 my_char = 0;
 uns16 index_pos = 0;
 uns16 index_pos_next = 0;
-uns16 count, s_count;
-uns16 sliver, x_origin, y_origin, pixel;
+uns16 count = 0, s_count = 0;
+uns16 sliver = 0, x_origin, y_origin, pixel;
 uns16 lookup;
 
 
@@ -456,9 +453,39 @@ uns16 lookup;
 			my_char = '?';
 		}	
 		my_char = my_char - first_char;
-
-		index_pos = font_index_loc[my_char];
-		index_pos_next = font_index_loc[my_char+1];
+		
+		#ifdef FONTS_IN_FLASH
+			#ifdef DEBUG_FONTS
+				serial_print_str("FLASH Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str("FLASH Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("FLASH fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = pgm_read_word(&font_index_loc[my_char]);
+			index_pos_next = pgm_read_word(&font_index_loc[my_char+1]);
+		#else
+			#ifdef DEBUG_FONTS
+				serial_print_str("Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str(" Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = font_index_loc[my_char];
+			index_pos_next = font_index_loc[my_char+1];
+		#endif
+		
+		//index_pos = font_index_loc[my_char];
+		//index_pos_next = font_index_loc[my_char+1];
 				
 		#ifdef DEBUG_FONTS
 			serial_print_var("my_char=", my_char);
@@ -493,8 +520,15 @@ uns16 lookup;
 				while (s_count < font_height) {	// interate over a single sliver
 
 				    if (s_count % 8 == 0) {	// grab another byte of the sliver
-					sliver = font_data_loc[lookup++];
-					//sliver = read_rom_uint8(&font_data_loc[lookup++]);
+					#ifdef	FONTS_IN_FLASH
+						sliver = pgm_read_byte(&font_data_loc[lookup++]);
+					#else
+						sliver = font_data_loc[lookup++];
+					#endif
+					
+					//sliver = font_data_loc[lookup++];
+					
+					//sliver = pgm_read_byte(&font_data_loc[lookup++]);
 					#ifdef DEBUG_FONTS
 						serial_print_str("sliver=");
 						serial_print_int_hex(sliver);
@@ -572,7 +606,7 @@ uns8 my_char;
 uns16 index_pos = 0;
 uns16 index_pos_next = 0;
 uns16 count, s_count;
-uns16 sliver, x_origin, y_origin, pixel;
+uns16 sliver = 0, x_origin, y_origin, pixel;
 uns16 lookup;
 
 
@@ -616,15 +650,49 @@ uns16 lookup;
 			
 		// first look up character in index
 		my_char = *str;
-
+		#ifdef DEBUG_FONTS
+			serial_print_str("00Right before tryingflash\n");
+		#endif
 		if ((my_char < first_char) || (my_char > last_char)) {
 			my_char = '?';
-		}	
+		}
+		#ifdef DEBUG_FONTS
+			serial_print_str("01Right before tryingflash\n");
+		#endif
 		my_char = my_char - first_char;
-
-		index_pos = font_index_loc[my_char];
-		index_pos_next = font_index_loc[my_char+1];
-				
+		#ifdef DEBUG_FONTS
+			serial_print_str("02Right before tryingflash\n");
+		#endif
+		#ifdef FONTS_IN_FLASH
+			#ifdef DEBUG_FONTS
+				serial_print_str("FLASH Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str("FLASH Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("FLASH fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = pgm_read_word(&font_index_loc[my_char]);
+			index_pos_next = pgm_read_word(&font_index_loc[my_char+1]);
+		#else
+			#ifdef DEBUG_FONTS
+				serial_print_str("Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str(" Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = font_index_loc[my_char];
+			index_pos_next = font_index_loc[my_char+1];
+		#endif
+		
 		#ifdef DEBUG_FONTS
 			serial_print_var("my_char=", my_char);
 			serial_print_var("first_char	=", first_char);
@@ -658,8 +726,15 @@ uns16 lookup;
 				while (s_count < font_height) {	// interate over a single sliver
 
 				    if (s_count % 8 == 0) {	// grab another byte of the sliver
-					sliver = font_data_loc[lookup++];
-					//sliver = read_rom_uint8(&font_data_loc[lookup++]);
+					
+						#ifdef	FONTS_IN_FLASH
+							sliver = pgm_read_byte(&font_data_loc[lookup++]);
+						#else
+							sliver = font_data_loc[lookup++];
+						#endif
+					
+					//sliver = font_data_loc[lookup++];
+					//sliver = pgm_read_byte(&font_data_loc[lookup++]);
 					#ifdef DEBUG_FONTS
 						serial_print_str("sliver=");
 						serial_print_int_hex(sliver);
@@ -731,15 +806,13 @@ uns16 lookup;
 	}
 }    
 
-
-
 void draw_fonts_print_str_wiggle(uns8 font_id, draw_x_type x, draw_y_type y, draw_x_type width, uns16 start_pixel, uns8 colour, char *str, int8 wiggle, int8 start_wiggle, uns8 start_wiggle_inc) {
 
 uns8 my_char;
 uns16 index_pos = 0;
 uns16 index_pos_next = 0;
 uns16 count, s_count;
-uns16 sliver, x_origin, y_origin, pixel;
+uns16 sliver = 0, x_origin, y_origin, pixel;
 uns16 lookup;
 int8  local_wiggle;
 uns8 wiggle_inc = start_wiggle_inc;
@@ -785,8 +858,14 @@ uns8 wiggle_inc = start_wiggle_inc;
 			while (s_count < font_height) {	// interate over a single sliver
 
 			    if (s_count % 8 == 0) {	// grab another byte of the sliver
-				//sliver = read_rom_uint8(&font_data_loc[lookup++]);
-				sliver = font_data_loc[lookup++];
+				//sliver = pgm_read_byte(&font_data_loc[lookup++]);
+				#ifdef	FONTS_IN_FLASH
+					sliver = pgm_read_byte(&font_data_loc[lookup++]);
+				#else
+					sliver = font_data_loc[lookup++];
+				#endif
+				
+				//sliver = font_data_loc[lookup++];
 			    }
 			    if (pixel >= start_pixel) {
 				if (test_bit(sliver, 7)) {
@@ -846,7 +925,7 @@ uns8 wiggle_inc = start_wiggle_inc;
 }
 
 // todo: must refactor this at some point
-void draw_fonts_bignum(draw_x_type x, draw_y_type y, draw_x_type width, draw_x_type start_pixel, uns8 colour, char *str) {
+/*void draw_fonts_bignum(draw_x_type x, draw_y_type y, draw_x_type width, draw_x_type start_pixel, uns8 colour, char *str) {
 
 uns8 my_char;
 
@@ -954,14 +1033,14 @@ uns8 my_char;
 		str++;
 	}
 }
-
+*/
 void draw_fonts_print_str_vert(uns8 font_id, draw_x_type x, draw_y_type y, draw_y_type width, uns16 start_pixel, uns8 colour, char *str) {
 
 uns8 my_char;
 uns16 index_pos = 0;
 uns16 index_pos_next = 0;
 uns16 count, s_count;
-uns16 sliver, x_origin, y_origin, pixel;
+uns16 sliver = 0, x_origin, y_origin, pixel;
 uns16 lookup;
 
 
@@ -1010,9 +1089,39 @@ uns16 lookup;
 			my_char = '?';
 		}
 		my_char = my_char - first_char;
-
-		index_pos = font_index_loc[my_char];
-		index_pos_next = font_index_loc[my_char+1];
+		
+		#ifdef FONTS_IN_FLASH
+			#ifdef DEBUG_FONTS
+				serial_print_str("FLASH Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str("FLASH Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("FLASH fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = pgm_read_word(&font_index_loc[my_char]);
+			index_pos_next = pgm_read_word(&font_index_loc[my_char+1]);
+		#else
+			#ifdef DEBUG_FONTS
+				serial_print_str("Print:\"");
+				serial_print_str(str);
+				serial_print_str("\"\n");	
+				serial_print_str(" Char=");
+				serial_putc(*str);
+				serial_print_nl();
+				serial_print_var("fh=", font_height);
+				serial_print_nl();
+			#endif
+			
+			index_pos = font_index_loc[my_char];
+			index_pos_next = font_index_loc[my_char+1];
+		#endif
+		
+		//index_pos = font_index_loc[my_char];
+		//index_pos_next = font_index_loc[my_char+1];
 
 		#ifdef DEBUG_FONTS
 			serial_print_var("my_char=", my_char);
@@ -1047,8 +1156,15 @@ uns16 lookup;
 				while (s_count < font_height) {	// interate over a single sliver
 
 				    if (s_count % 8 == 0) {	// grab another byte of the sliver
-					sliver = font_data_loc[lookup++];
-					//sliver = read_rom_uint8(&font_data_loc[lookup++]);
+					//sliver = font_data_loc[lookup++];
+					
+					#ifdef	FONTS_IN_FLASH
+						sliver = pgm_read_byte(&font_data_loc[lookup++]);
+					#else
+						sliver = font_data_loc[lookup++];
+					#endif
+					
+					//sliver = pgm_read_byte(&font_data_loc[lookup++]);
 					#ifdef DEBUG_FONTS
 						serial_print_str("sliver=");
 						serial_print_int_hex(sliver);
@@ -1096,5 +1212,39 @@ uns16 lookup;
 		}
 	}
 }
+/*
+uns8 ICACHE_FLASH_ATTR pgm_read_byte(const uns8* addr){
+    uns32 bytes;
+	uns8 tmp_data;
+    bytes = *(uns32*)((uns32)addr & ~3);
+	tmp_data = (bytes >> 24) & 0xFF;
+	#ifdef DEBUG_FONTS
+		serial_print_str("\nprinting 8bytes result: ");
+		serial_print_int_hex(bytes);
+		serial_print_str("\n");
+		//serial_print_str("\nprinting 8tmp result: ");
+		//serial_print_int_hex(tmp_data);
+		//serial_print_str("\n");
+	#endif
+	//return tmp_data;
+    return ((uns8*)&bytes)[(uns32)addr & 3];
+};
+
+uns16 ICACHE_FLASH_ATTR pgm_read_word(const uns16* addr){
+    uns32 bytes;
+	uns16 tmp_data;
+    bytes = *(uns32*)((uns32)addr & ~3);
+	tmp_data = (bytes >> 16) & 0xFFFF;
+	#ifdef DEBUG_FONTS
+		serial_print_str("\nprinting 16bytes result: ");
+		serial_print_int_hex(((uns16*)&bytes)[((uns32)addr >> 1) & 1]);
+		serial_print_str("\n");
+		//serial_print_str("\nprinting 16tmp result: ");
+		//serial_print_int_hex(tmp_data);
+		//serial_print_str("\n");
+	#endif	
+	//return tmp_data;
+    return ((uns16*)&bytes)[((uns32)addr >> 1) & 1];
+};*/
 
 

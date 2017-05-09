@@ -34,55 +34,95 @@ Contact us at admin [at] embeddedadventures.com
 
 #ifndef __config_h
 #define __config_h
+
 #include "Arduino.h"
 
-//Definitions for the various display modules. Only one should be defined
-#define EPD200200B
-//#define SSD1306_EA
+#if defined(ARDUINO_ARCH_SAMD)
+	#warning "Using a SAMD21 board, more fonts allowed!"
+	#define DRAW_FONT_5NARROW
+	#define DRAW_FONT_5NORMAL
+	#define DRAW_FONT_7NORMAL
+	#define DRAW_FONT_8NORMAL
+	#define DRAW_FONT_8FIXED
+	#define DRAW_FONT_10NARROW
+	#define DRAW_FONT_10NORMAL
+	#define DRAW_FONT_10DOUBLE
+	#define DRAW_FONT_12DOUBLE
+	#define DRAW_FONT_10NORMAL
+	#define FONT_COUNT 	10
+#elif defined(ESP8266) || defined(ESP32)
+	#warning "Using an ESP8266 or ESP32, good memory!"
+	#define DRAW_FONT_5NARROW
+	#define DRAW_FONT_5NORMAL
+	#define DRAW_FONT_7NORMAL
+	#define DRAW_FONT_8NORMAL
+	#define DRAW_FONT_8FIXED
+	#define DRAW_FONT_10NARROW
+	#define DRAW_FONT_10NORMAL
+	#define DRAW_FONT_10DOUBLE
+	#define DRAW_FONT_12DOUBLE
+	#define DRAW_FONT_10NORMAL
+	#define FONT_COUNT 	10
+#else
+	#warning "Using an Arduino board, only 2 fonts allowed!"
+	#define DRAW_FONT_10NORMAL
+	#define DRAW_FONT_10DOUBLE
+	#define FONT_COUNT 	2
+#endif
+
+#define 	EPD200200B
+//#define 	SSD1306_OLED6432
+//#define 	SSD1306_OLED12864
 //#define	PCD8544_EA
 
-#ifdef	SSD1306_EA
+#define DRAW_BITS_PER_PIXEL 1
+#define	FONTS_IN_FLASH
+
+#ifdef	SSD1306_OLED6432
+	#define DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
+	#define DRAW_HW_BUFFER_ORIENTATION_VERTICAL
+	#define FONT_COUNT 		8
+	#define	OLED_HEIGHT		32
+	#define	OLED_WIDTH		64
+	#define	OLED_OFFSET		32
+#endif
+
+#ifdef	SSD1306_OLED12864
+	#define DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
+	#define DRAW_HW_BUFFER_ORIENTATION_VERTICAL
+	#define FONT_COUNT 	8
+	#define	OLED_HEIGHT		64
+	#define	OLED_WIDTH		128
+	#define	OLED_OFFSET		0
+#endif
+
+#ifdef	PCD8544_EA
 	#define DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
 	#define DRAW_HW_BUFFER_ORIENTATION_VERTICAL
 	#define FONT_COUNT 	6
 #endif
 
-#ifdef	PCD8544_EA
-	#define DRAW_HW_Y_ORIGIN_TOP_LEFT
-	#define DRAW_HW_BUFFER_ORIENTATION_VERTICAL
-	#define FONT_COUNT 	6
-#endif
-
 #ifdef	EPD200200B
+  #warning "EPD-20020B defined!"
 	#define DRAW_HW_Y_ORIGIN_TOP_LEFT
 	#define DRAW_HW_BUFFER_ORIENTATION_HORIZONTAL
-	#define FONT_COUNT 	9
 #endif
 
-#define DRAW_BITS_PER_PIXEL 1
+#define DEBUG_FONTS
 
-//#define DEBUG_FONTS
-
-//#define DRAW_HW_Y_ORIGIN TOP_LEFT
-//#define DRAW_HW_Y_ORIGIN_BOTTOM_LEFT
-
-//#define DRAW_HW_BUFFER_ORIENTATION_HORIZONTAL
-//#define DRAW_HW_BUFFER_ORIENTATION_VERTICAL
 
 #define DRAW_DEBUG
 #define DRAW_DOUBLE_BUFFER
 
 #define DRAW_SCROLL_LENGTH 1000
 #define DRAW_SCROLL_SPEED 100
-
-//#define FONT_COUNT 6
-
+/*
 #define DRAW_FONT_5NARROW
 #define DRAW_FONT_5NORMAL
 #define DRAW_FONT_7NORMAL
 #define DRAW_FONT_8NORMAL
 #define DRAW_FONT_8FIXED
-//#define DRAW_FONT_10NARROW
+#define DRAW_FONT_10NARROW
 #define DRAW_FONT_10NORMAL
 #define DRAW_FONT_10DOUBLE
 #define DRAW_FONT_12DOUBLE
@@ -93,7 +133,7 @@ Contact us at admin [at] embeddedadventures.com
 //#define DRAW_FONT_32SEGOE
 //#define DRAW_FONT_32TAHOMA
 #define DRAW_FONT_BIGNUM
-
+*/
 // Define to handle dirty rectangles
 //#define DRAW_DIRTY_RECTANGLE
 

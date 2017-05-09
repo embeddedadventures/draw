@@ -34,7 +34,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_5normal.h"
 
-uns8 const font_5normal_data[]  = {
+uns8 const font_5normal_data[] PROGMEM = {
    // 0,  32 -
  0x00, 0x00, 0x00,
 //
@@ -491,7 +491,7 @@ uns8 const font_5normal_data[]  = {
 //  ** *
 00,
 };
-uns16 const font_5normal_index[]  = {
+uns16 const font_5normal_index[] PROGMEM = {
     0, // 32 -
     3, // 33 - !
     4, // 34 - "

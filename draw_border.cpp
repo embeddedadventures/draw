@@ -50,7 +50,7 @@ void draw_border_set_style(uns8 style) {
 }
 
 void border_alternate_dots_update(uns8 next_frame) {
-uns16 col1, col2;
+uns16 col1 = 0, col2 = 0;
 
     if (next_frame) {
 	border_frame++;
@@ -94,7 +94,7 @@ uns16 col1, col2;
 }
 
 void border_one_of_four_update(uns8 next_frame) {
-uns16 col1, col2, col3, col4;
+uns16 col1 = 0, col2 = 0, col3 = 0, col4 = 0;
 
     if (next_frame) {
 	border_frame++;
@@ -158,7 +158,7 @@ uns16 col1, col2, col3, col4;
 }
 
 void border_one_of_four_multi_update(uns8 next_frame) {
-uns16 col1, col2, col3, col4;
+uns16 col1 = 0, col2 = 0, col3 = 0, col4 = 0;
 uns8 col = 1;
 
     if (next_frame) {
@@ -224,7 +224,7 @@ uns8 col = 1;
 }
 
 void border_one_of_four_3d_update(uns8 next_frame) {
-uns16 col1, col2, col3, col4;
+uns16 col1 = 0, col2 = 0, col3 = 0, col4 = 0;
 uns8 col = 1;
 
     if (next_frame) {

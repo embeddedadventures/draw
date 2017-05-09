@@ -74,11 +74,12 @@ for (count=0; count != draw_total_buffer_size; count++) {
 
 
 uns8 draw_init(draw_x_type width, draw_y_type height, uns8 bits_per_pixel) {
-
+	serial_print_nl("xx");
     draw_pixels_wide = width;
     draw_pixels_high = height;
     draw_pixels_per_byte = 8 / bits_per_pixel;
     draw_bits_per_pixel = bits_per_pixel;
+	serial_print_nl("xxx");
     if (draw_bits_per_pixel <= 8) {
 	// was: draw_total_buffer_size = draw_pixels_wide * draw_pixels_high / draw_pixels_per_byte;
 	draw_total_buffer_size = draw_pixels_wide * draw_pixels_high * draw_bits_per_pixel / 8;
@@ -86,6 +87,7 @@ uns8 draw_init(draw_x_type width, draw_y_type height, uns8 bits_per_pixel) {
 	// does this work for 24bpp?
 	draw_total_buffer_size = draw_pixels_wide * draw_pixels_high * draw_bits_per_pixel / 8;
     }
+	serial_print_nl("xxxx");
 #ifdef DRAW_DIRTY_RECTANGLE
   dirty_set = 1;
 #endif
@@ -106,6 +108,7 @@ uns8 draw_init(draw_x_type width, draw_y_type height, uns8 bits_per_pixel) {
 	if (draw_buffer != 0) {
     serial_print_str("Buffer size = ");
     serial_print_int(draw_total_buffer_size);
+	serial_print_nl();
   	return 1;
 	}
 
@@ -117,9 +120,9 @@ uns8 draw_init(draw_x_type width, draw_y_type height, uns8 bits_per_pixel) {
 
 void draw_set_pixel(draw_x_type x, draw_y_type y, draw_colour_type colour) {
 
-uns32 buffer_loc, loc_byte;
-uns8  loc_bit, loc_in_buffer, buffer_num;
-uns8  bit_count;
+uns32 buffer_loc = 0, loc_byte = 0;
+uns8  loc_bit = 0, loc_in_buffer = 0, buffer_num = 0;
+uns8  bit_count = 0;
 
 if ((x >= draw_pixels_wide) || (y >= draw_pixels_high)) {
     

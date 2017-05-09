@@ -34,7 +34,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_10narrow.h"
 
-uns16  const font_10narrow_index[]  = {
+uns16  const font_10narrow_index[] PROGMEM = {
 
     0, // 32 -  
     3, // 33 - !
@@ -103,7 +103,7 @@ uns16  const font_10narrow_index[]  = {
     242, // 96 - `
 
 };
-uns8  const font_10narrow_data[]  = {
+uns8  const font_10narrow_data[] PROGMEM = {
 
     // 0,  32 -
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

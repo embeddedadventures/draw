@@ -44,7 +44,7 @@ Contact us at admin [at] embeddedadventures.com
 #define DRAW_FONT_10NORMAL_BYTES_PER_SLIVER 2
 #define DRAW_FONT_10NORMAL_INTER_GAP 1
 
-extern uns8 const font_10normal_data[];
-extern uns16 const font_10normal_index[];
+extern const uns8  font_10normal_data[];
+extern const uns16  font_10normal_index[];
 
 #endif

@@ -50,22 +50,39 @@ Contact us at admin [at] embeddedadventures.com
 	#define	int8	int8_t
 #endif
 
-#define 	serial_print_str(x) 	Serial.print(x)
-#define		serial_print_int(x)		Serial.print(x, DEC)
-#define		serial_print_int_hex(x)	Serial.print(x, HEX)
-#define		serial_print_nl(x)		Serial.println(x)
-#define		serial_print_var(x, y)	Serial.print(x); Serial.print(y)
-#define		serial_putc(x)			Serial.print(x)
+#ifdef	DEBUG_FONTS
+	#define DEBUG_FONT(x)	serial_print_str(x); serial_print_str(" ");
+	#define	DEBUG_FONTX(x)	serial_print_int_hex(x, HEX);
+	#define	DEBUG_FONTLN(x)	serial_print_nl(x);
+#else
+	#define DEBUG_FONT(x)	
+	#define	DEBUG_FONTX(x)	
+	#define	DEBUG_FONTLN(x)	
+#endif
+	
+#if (ARDUINO_SAMD_VARIANT_COMPLIANCE)
+	//#error		"SAMD21 works"
+	#define 	serial_print_str(x) 	SerialUSB.print(x)
+	#define		serial_print_int(x)		SerialUSB.print(x, DEC)
+	#define		serial_print_int_hex(x)	SerialUSB.print(x, HEX)
+	#define		serial_print_nl(x)		SerialUSB.println(x)
+	#define		serial_print_var(x, y)	SerialUSB.print(x); SerialUSB.print(y)
+	#define		serial_putc(x)			SerialUSB.print(x)
+#else
+	//#error		"SAMD21 not working"
+	#define 	serial_print_str(x) 	Serial.print(x)
+	#define		serial_print_int(x)		Serial.print(x, DEC)
+	#define		serial_print_int_hex(x)	Serial.print(x, HEX)
+	#define		serial_print_nl(x)		Serial.println(x)
+	#define		serial_print_var(x, y)	Serial.print(x); Serial.print(y)
+	#define		serial_putc(x)			Serial.print(x)
+#endif
 
 #define clear_bit( x, b )  ((x) &= ~(1 << (b)))
 #define set_bit( x, b )   ((x) |= (1 << (b)))
 #define test_bit( x, b )  ((x) & (1 << (b)))
 #define toggle_bit( x, b )  ((x) ^= (1 << (b)))
 
-/*uns8 ICACHE_FLASH_ATTR read_rom_uint8(const uns8* addr){
-    uint32 bytes;
-    bytes = *(uint32*)((uint32)addr & ~3);
-    return ((uns8*)&bytes)[(uint32)addr & 3];
-}*/
+
 
 #endif

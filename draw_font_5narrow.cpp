@@ -34,7 +34,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_5narrow.h"
 
-uns8 const font_5narrow_data[]  = {
+uns8 const font_5narrow_data[] PROGMEM = {
     0x00, 0x00, 0x00, 0xb8, 0x18, 0x00, 0x18, 0x50,
      0xf8, 0x50, 0xf8, 0x50, 0xa8, 0x50, 0xa8, 0x50,
      0xa8, 0x98, 0x58, 0x20, 0xd0, 0xc8, 0x50, 0xa8,
@@ -68,7 +68,7 @@ uns8 const font_5narrow_data[]  = {
 
 
 };
-uns16 const font_5narrow_index[]  = {
+uns16 const font_5narrow_index[] PROGMEM = {
     0, // 32 -
     3, // 33 - !
     4, // 34 - "

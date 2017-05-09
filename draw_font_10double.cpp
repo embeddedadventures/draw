@@ -34,7 +34,7 @@ Contact us at admin [at] embeddedadventures.com
 
 #include "draw_font_10double.h"
 
-uns16  const font_10double_index[]  = {
+uns16  const font_10double_index[] PROGMEM = {
 
     0, // 32 -
     3, // 33 - !
@@ -104,7 +104,7 @@ uns16  const font_10double_index[]  = {
 
 };
 
-uns8  const font_10double_data[]  = {
+uns8  const font_10double_data[] PROGMEM = {
 
     // 0,  32 -
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
